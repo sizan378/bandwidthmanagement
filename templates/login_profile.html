@@ -1,0 +1,87 @@
+
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+           
+
+                <!-- <button><a href="{% url 'upgrade' %}">Upgrade </a></button> -->
+           
+           
+                <button><a href="{% url 'downgrade' %}">Requirement </a></button>
+  
+          
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+           
+            <th scope="col">POP Name</th>
+            <th scope="col">Owner</th>
+            <th scope="col">Category</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+            {% for p in post %}
+              
+          <tr>
+            <td>{{ p.pop_name }}</td>
+            <td>{{ p.article_author.name }}</td>
+            <td>{{ p.category }}</td>
+            
+          </tr>
+          {% endfor %}
+          
+        </tbody>
+      </table>
+    
+    
+    </div>
+    <div class="col-6">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+           
+            <th scope="col">Internet</th>
+            <th scope="col">Facebook</th>
+            <th scope="col">YouTube</th>
+            <th scope="col">BDIX</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for q in posts %}
+            <tr>
+              <td>{{ q.AfterUpgrade_Internet }}</td>
+              <td>{{ q.AfterUpgrade_Facebook }}</td>
+              <td>{{ q.AfterUpgrade_YouTube }}</td>
+              <td>{{ q.AfterUpgrade_BDInternet }}</td>
+            </tr>
+            
+          
+          {% endfor %}
+          
+        </tbody>
+      </table>
+    
+    
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+

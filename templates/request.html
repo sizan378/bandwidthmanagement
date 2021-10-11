@@ -1,0 +1,54 @@
+
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+
+{% block body %}
+
+
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+       
+        <th scope="col">POP Name</th>
+        <th scope="col">Owner</th>
+        <th scope="col">Category</th>
+        <th scope="col"> EX Internet</th>
+        <th scope="col"> EX Facebook</th>
+        <th scope="col">EX YouTube</th>
+        <th scope="col">EX BDIX</th>
+        <th scope="col"> INT</th>
+        <th scope="col"> FNA </th>
+        <th scope="col">GGC</th>
+        <th scope="col">BDIX</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for p in post %}
+      <tr>
+       
+        
+        <td>{{ p.pop_name }}</td>
+        <td><a href="{% url 'author' name=p.article_author.name.username %}">{{ p.article_author.name }}</a></td>
+        <td><a href="{% url 'topic' name=p.category.name %}">{{ p.category }}</a></td>
+        <td>{{ p.Existing_Internet }}</td>
+        <td>{{ p.Existing_Facebook }}</td>
+        <td>{{ p.Existing_YouTube }}</td>
+        <td>{{ p.Existing_BDInternet }}</td>
+        <td>{{ p.Upgrade_Internet }}</td>
+        <td>{{ p.Upgrade_Facebook }}</td>
+        <td>{{ p.Upgrade_YouTube }}</td>
+        <td>{{ p.Upgrade_BDInternet }}</td>
+        <td><a href="{% url 'update' id=p.pk %}"><button class="btn-primary">Upgrade</button></a></td>
+        
+      </tr>
+      {% endfor %}
+      
+    </tbody>
+  </table>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+
+{% endblock %}
+
+
+{% block body %}
+
+<h4> Category: {{ cat.name }}</h4>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+       
+        <th scope="col">POP Name</th>
+        <th scope="col">Owner</th>
+        <th scope="col">Category</th>
+        <th scope="col">Internet</th>
+        <th scope="col">Facebook</th>
+        <th scope="col">YouTube</th>
+        <th scope="col">BDIX</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for p in post %}
+      <tr>
+       
+        
+        <td>{{ p.pop_name }}</td>
+        <td><a href="#">{{ p.article_author }}</a></td>
+        <td><a href="{% url 'topic' name=p.category.name %}">{{ p.category }}</a></td>
+        <td>{{ p.Existing_Internet }}</td>
+        <td>{{ p.Existing_Facebook }}</td>
+        <td>{{ p.Existing_YouTube }}</td>
+        <td>{{ p.Existing_BDInternet }}</td>
+
+        
+      </tr>
+      {% endfor %}
+      
+    </tbody>
+  </table>
+
+{% endblock %}

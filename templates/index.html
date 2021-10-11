@@ -1,0 +1,96 @@
+
+
+
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block body %}
+
+
+<div class="form">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+             
+              <th scope="col">POP Name</th>
+              <th scope="col">Owner</th>
+              <th scope="col">Category</th>
+             
+            </tr>
+          </thead>
+          <tbody>
+              {% for p in post %}
+                
+            <tr>
+              <td>{{ p.pop_name }}</a></td>
+              <td><a href="{% url 'author' name=p.article_author.name.username %}">{{ p.article_author.name }}</a></td>
+              <td><a href="{% url 'topic' name=p.category.name %}">{{ p.category }}</a></td>
+              
+            </tr>
+            {% endfor %}
+            
+          </tbody>
+        </table>
+      
+      
+      </div>
+      <div class="col-6">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+             
+              <th scope="col">Internet</th>
+              <th scope="col">Facebook</th>
+              <th scope="col">YouTube</th>
+              <th scope="col">BDIX</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for q in posts %}
+              <tr>
+                <td>{{ q.AfterUpgrade_Internet }}</td>
+                <td>{{ q.AfterUpgrade_Facebook }}</td>
+                <td>{{ q.AfterUpgrade_YouTube }}</td>
+                <td>{{ q.AfterUpgrade_BDInternet }}</td>
+              </tr>
+              
+            
+            {% endfor %}
+            
+          </tbody>
+        </table>
+      
+      
+      </div>
+    </div>
+
+  <div class="container">
+    <div class="pagination">
+      <span class="step-links">
+          {% if post.has_previous %}
+              <a href="?page=1">&laquo; first</a>
+              <a href="?page={{ post.previous_page_number }}">previous</a>
+          {% endif %}
+  
+          <span class="current">
+              Page {{ post.number }} of {{ post.paginator.num_pages }}.
+          </span>
+  
+          {% if post.has_next %}
+              <a href="?page={{ post.next_page_number }}">next</a>
+              <a href="?page={{ post.paginator.num_pages }}">last &raquo;</a>
+          {% endif %}
+      </span>
+  </div>
+  </div>
+  </div>
+  
+
+{% endblock %}
