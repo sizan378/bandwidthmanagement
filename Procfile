@@ -1,0 +1,1 @@
+web: gunicorn Bwmanagement.wsgi --log-file -
